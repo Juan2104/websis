@@ -6,7 +6,6 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper/modules";
 import m3dash from "../assets/m3autos/Dashboard.jpg";
 import m3informes from "../assets/m3autos/Informes.jpg";
-import m3listado from "../assets/m3autos/Listado.jpg";
 import m3resumen from "../assets/m3autos/Informes.jpg";
 import credi1 from "../assets/creditos/Dashboard.jpg";
 import credi2 from "../assets/creditos/caja.jpg";
@@ -23,7 +22,7 @@ const projects = [
     title: "Concesionaria Autos",
     description:
       "Este proyecto está destinado a la administración de una concesionaria de autos, permitiendo gestionar desde la compra hasta la venta y los gastos diarios.",
-    images: [m3dash, m3informes, m3listado, m3resumen],
+    images: [m3dash, m3informes, m3resumen],
   },
   {
     title: "Gestión de Créditos",
