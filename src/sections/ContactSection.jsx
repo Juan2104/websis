@@ -1,6 +1,10 @@
 import { useRef, useState } from "react";
 import { Box, Typography, TextField, Button, Alert } from "@mui/material";
 import emailjs from "emailjs-com";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-MTBE6JJ3H0"; // Reemplázalo con tu ID de Google Analytics
+ReactGA.initialize(TRACKING_ID);
 
 const ContactSection = () => {
   const formRef = useRef();
@@ -15,6 +19,14 @@ const ContactSection = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true); // Deshabilitar botón mientras se envía
+
+
+    // Registrar evento en Google Analytics cuando el usuario hace clic en "Enviar"
+    ReactGA.event({
+      category: "Contacto",
+      action: "Clic en Enviar",
+      label: "Formulario de Contacto",
+    });
 
     emailjs
       .sendForm(

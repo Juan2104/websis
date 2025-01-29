@@ -12,7 +12,7 @@ ReactGA.initialize(TRACKING_ID);
 
 const App = () => {
   useEffect(() => {
-    ReactGA.send("pageview"); // Envía un evento cada vez que se carga la página
+    ReactGA.send("Ingreso Web"); // Envía un evento cada vez que se carga la página
   }, []);
   return (
     <div>

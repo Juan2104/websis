@@ -1,8 +1,39 @@
+import { useEffect } from "react";
 import { Box, Typography, Button } from "@mui/material";
 import fondo from "../assets/creditos/PANTALLA.jpg";
-import { Link } from 'react-scroll';
+import { Link, Events } from "react-scroll";
+import ReactGA from "react-ga4";
+
+const TRACKING_ID = "G-MTBE6JJ3H0"; // Reemplázalo con tu ID de Google Analytics
+ReactGA.initialize(TRACKING_ID);
 
 const HomeSection = () => {
+  useEffect(() => {
+    // Evento cuando la sección "Home" entra en pantalla
+    Events.scrollEvent.register("begin", (to) => {
+      if (to === "home") {
+        ReactGA.event({
+          category: "Scroll",
+          action: "Usuario visitó la sección Home",
+          label: "Sección Home",
+        });
+      }
+    });
+
+    return () => {
+      Events.scrollEvent.remove("begin");
+    };
+  }, []);
+
+  // Evento cuando se hace clic en el botón "Conoce más"
+  const handleClick = () => {
+    ReactGA.event({
+      category: "Interacción",
+      action: "Clic en Conoce más",
+      label: "Botón Conoce más - Home",
+    });
+  };
+
   return (
     <Box
       id="home"
@@ -59,6 +90,7 @@ const HomeSection = () => {
             transform: "scale(1.05)",
           },
         }}
+        onClick={handleClick} // Evento de clic
       >
         Conoce más
       </Button>
