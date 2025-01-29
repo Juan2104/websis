@@ -65,13 +65,17 @@ const PortfolioSection = () => {
                 borderRadius: "12px",
                 overflow: "hidden",
                 transition: "0.3s",
+                display: "flex",
+                flexDirection: "column", // Asegurar alineación vertical
+                height: "100%", // Todas las cards tendrán la misma altura
+                minHeight: "450px", // Altura mínima uniforme
                 "&:hover": {
                   transform: "scale(1.05)",
                   boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.5)",
                 },
               }}
             >
-              {/* Carrusel de imágenes */}
+              {/* Carrusel de imágenes con ajuste responsivo */}
               <Swiper
                 modules={[Pagination, Navigation]}
                 spaceBetween={10}
@@ -87,20 +91,24 @@ const PortfolioSection = () => {
                       alt={`Imagen ${idx + 1}`}
                       style={{
                         width: "100%",
-                        height: "220px",
-                        objectFit: "cover",
-                        objectPosition: "center",
+                        height: "auto",
+                        maxHeight: "250px",
+                        objectFit: "contain", // Evita cortes
+                        display: "block",
+                        margin: "auto",
                       }}
                     />
                   </SwiperSlide>
                 ))}
               </Swiper>
 
-              <CardContent>
+              <CardContent sx={{ flexGrow: 1, display: "flex", flexDirection: "column" }}>
                 <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                   {project.title}
                 </Typography>
-                <Typography variant="body2">{project.description}</Typography>
+                <Typography variant="body2" sx={{ flexGrow: 1 }}>
+                  {project.description}
+                </Typography>
               </CardContent>
             </Card>
           </Grid>
